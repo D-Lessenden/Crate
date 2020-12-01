@@ -21,7 +21,8 @@ module.exports = {
         password: bcrypt.hashSync('123456', config.saltRounds),
         role: params.user.roles.user,
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        style: null
       }
     ])
   },
