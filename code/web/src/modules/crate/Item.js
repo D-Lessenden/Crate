@@ -1,10 +1,10 @@
 // Imports
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import React, { PureComponent } from 'react'                  // Frontend framwork
+import PropTypes from 'prop-types'                            // Prop validating
+import { connect } from 'react-redux'                         // Gives access to Redux store
+import { Link, withRouter } from 'react-router-dom'           // Interaction with 'history' object
 
-// UI Imports
+// UI Imports - These are all style-embedded HTML components
 import Card from '../../ui/card/Card'
 import Button from '../../ui/button/Button'
 import H4 from '../../ui/typography/H4'
@@ -12,29 +12,33 @@ import Icon from '../../ui/icon'
 import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
-import { APP_URL } from '../../setup/config/env'
-import userRoutes from '../../setup/routes/user'
-import { messageShow, messageHide } from '../common/api/actions'
-import { create } from '../subscription/api/actions'
+import { APP_URL } from '../../setup/config/env'               // This is the relative website path
+import userRoutes from '../../setup/routes/user' // Displays the top buttons. Toggles if the user is authenticated or not
+import { messageShow, messageHide } from '../common/api/actions'// This controls the pop-up message
+import { create } from '../subscription/api/actions'            // This is our interaction with the server to post a new subscription
 
 // Component
 class Item extends PureComponent {
 
   constructor(props) {
     super(props)
-
+    // isLoading controls the button disabled state. true corresponds to disabled
     this.state = {
       isLoading: false
     }
   }
 
+  // this is the function that gets fired when the subscribe button is clicked
   onClickSubscribe = (crateId) => {
+    // disable button
     this.setState({
       isLoading: true
     })
 
+    // show pop up message
     this.props.messageShow('Subscribing, please wait...')
 
+    // post to server.
     this.props.create({ crateId })
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
@@ -42,17 +46,20 @@ class Item extends PureComponent {
         } else {
           this.props.messageShow('Subscribed successfully.')
 
+          // this navigates to the subscriptions page when successfully subscribing
           this.props.history.push(userRoutes.subscriptions.path)
         }
       })
       .catch(error => {
         this.props.messageShow('There was some error subscribing to this crate. Please try again.')
       })
+      // button is enabled again
       .then(() => {
         this.setState({
           isLoading: false
         })
 
+        // after 5 seconds, if there are any messages, hide the message
         window.setTimeout(() => {
           this.props.messageHide()
         }, 5000)
@@ -99,10 +106,12 @@ Item.propTypes = {
 }
 
 // Component State
+// this is the Redux behavior
 function itemState(state) {
   return {
     user: state.user
   }
 }
 
+// this 1.) attaches the Item compontent with a history object and then 2.) connects it to the Redux Store
 export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))
