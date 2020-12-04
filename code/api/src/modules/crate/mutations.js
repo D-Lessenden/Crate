@@ -50,6 +50,7 @@ export const crateRemove = {
   args: {
     id: {
       name: 'id',
+      // Need the id in order to remove crate 
       type: GraphQLInt
     }
   },
