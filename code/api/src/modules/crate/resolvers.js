@@ -47,6 +47,7 @@ export async function update(parentValue, { id, name, description }, { auth }) {
 }
 
 // Delete crate
+// deletes a crate udentified by ID 
 export async function remove(parentValue, { id }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Crate.destroy({where: {id}})
