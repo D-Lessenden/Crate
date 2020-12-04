@@ -32,6 +32,7 @@ export async function create(parentValue, { name, description }, { auth }) {
 }
 
 // Update crate
+// updates a crate identified by ID if no ID match, error
 export async function update(parentValue, { id, name, description }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
     return await models.Crate.update(
