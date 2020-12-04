@@ -1,11 +1,12 @@
 // Imports
-import axios from 'axios'
-import { query, mutation } from 'gql-query-builder'
+import axios from 'axios'                           // request library
+import { query, mutation } from 'gql-query-builder' // graphQL pre-built template
 
 // App Imports
-import { routeApi } from '../../../setup/routes'
+import { routeApi } from '../../../setup/routes'    // url to send requests
 
 // Actions Types
+// Redux switch cases
 export const SUBSCRIPTIONS_GET_LIST_REQUEST = 'SUBSCRIPTIONS/GET_LIST_REQUEST'
 export const SUBSCRIPTIONS_GET_LIST_RESPONSE = 'SUBSCRIPTIONS/GET_LIST_RESPONSE'
 export const SUBSCRIPTIONS_GET_LIST_FAILURE = 'SUBSCRIPTIONS/GET_LIST_FAILURE'
@@ -20,6 +21,8 @@ export const SUBSCRIPTIONS_GET_FAILURE = 'SUBSCRIPTIONS/GET_FAILURE'
 
 // Get list of subscriptions
 export function getList(isLoading = true) {
+
+  // dispatch attaches to redux-store
   return dispatch => {
     dispatch({
       type: SUBSCRIPTIONS_GET_LIST_REQUEST,
@@ -27,12 +30,15 @@ export function getList(isLoading = true) {
       isLoading
     })
 
+    // fetch
     return axios.post(routeApi, query({
-      operation: 'subscriptions',
-      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt']
+      operation: 'subscriptions', // graphQL 'endpoint'
+      fields: ['id', 'user { name, email }', 'crate { id, name, description }', 'createdAt'] // tell graphQL what we want back
     }))
       .then(response => {
         if (response.status === 200) {
+
+          // redux - happy path
           dispatch({
             type: SUBSCRIPTIONS_GET_LIST_RESPONSE,
             error: null,
@@ -44,6 +50,8 @@ export function getList(isLoading = true) {
         }
       })
       .catch(error => {
+
+        // redux - sad path
         dispatch({
           type: SUBSCRIPTIONS_GET_LIST_FAILURE,
           error: 'Some error occurred. Please try again.',
@@ -121,7 +129,10 @@ export function get(slug, isLoading = true) {
 }
 
 // Create subscription
+// THIS is where we want to start our new track
 export function create(variables) {
+
+  // this is our case when we've subscribed before
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'subscriptionCreate',
@@ -129,6 +140,8 @@ export function create(variables) {
       fields: ['id']
     }))
   }
+
+  // we'll have to add a case where we haven't subscribed before
 }
 
 // Remove subscription
