@@ -1,3 +1,4 @@
+// This file is utilized to boot up a server when npm start is ran from terminal 
 // App Imports
 import { PORT, NODE_ENV } from '../config/env'
 
