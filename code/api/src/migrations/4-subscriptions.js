@@ -1,3 +1,4 @@
+// Largely the same as user migration. key difference is that there is a referene.
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('subscriptions', {
@@ -10,6 +11,8 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references: {
+          // this allows for a relationship between the subscription and an user
+          // uses the userId as a foreign key
           model: 'users',
           key: 'id'
         },
@@ -18,6 +21,8 @@ module.exports = {
       crateId: {
         type: Sequelize.INTEGER,
         references: {
+          // this allows for a relationship between the subscription and a crate
+          // uses the crateId as a foreign key
           model: 'crates',
           key: 'id'
         },
