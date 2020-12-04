@@ -1,7 +1,9 @@
+// looks to be a runner file
 // Imports
 import express from 'express'
 
 // App Imports
+// import acts similarily to rails 'require' to pull from other files
 import setupLoadModules from './setup/load-modules'
 import setupGraphQL from './setup/graphql'
 import setupUpload from './setup/upload'
