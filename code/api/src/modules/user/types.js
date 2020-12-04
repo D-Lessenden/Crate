@@ -1,3 +1,5 @@
+// Largely the same as the types from modules/crate
+
 // Imports
 import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
 
