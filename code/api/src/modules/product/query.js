@@ -1,3 +1,5 @@
+// Largely the same as the query from modules/crate
+
 // Imports
 import { GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 
