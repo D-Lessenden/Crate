@@ -1,3 +1,5 @@
+// Resolvers are run at the end of the query to either query or throw an error or edit something
+
 // Imports
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -6,7 +8,6 @@ import jwt from 'jsonwebtoken'
 import serverConfig from '../../config/server'
 import params from '../../config/params'
 import models from '../../setup/models'
-
 // Create
 export async function create(parentValue, { name, email, password }) {
   // Users exists with same email check
@@ -70,7 +71,7 @@ export async function getAll() {
 
 // Delete
 export async function remove(parentValue, { id }) {
-  return await models.User.destroy({ where: { id } })
+  return await models.User.destroy({ where: { id } }) // Destroying a user
 }
 
 // User genders

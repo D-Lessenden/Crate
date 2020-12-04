@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');
 
-module.exports = {
+module.exports = {                                  // Looks like seeders take the same form as migrations for a rollback/update option
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [
       {

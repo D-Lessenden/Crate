@@ -7,7 +7,7 @@ import { getAll, getById, login, getGenders } from './resolvers'
 
 // All
 export const users = {
-  type: new GraphQLList(UserType),
+  type: new GraphQLList(UserType),          // This file looks like the same format as mutations
   resolve: getAll
 }
 

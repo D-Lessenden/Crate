@@ -12,7 +12,7 @@ export default function (server) {
 
   server.use(authentication)
 
-  // API (GraphQL on route `/`)
+  // API (GraphQL on route `/`) I'm confused why the route is '/' I thought there was only one route
   server.use(serverConfig.graphql.endpoint, graphqlHTTP(request => ({
     schema,
     graphiql: serverConfig.graphql.ide,

@@ -1,8 +1,8 @@
 // Imports
-import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql' // Import data types?
 
 // User type
-const UserType = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({  // Defines a user and it's data types
   name: 'user',
   description: 'User type',
 
@@ -18,7 +18,7 @@ const UserType = new GraphQLObjectType({
 })
 
 // User Login type
-const UserLoginType = new GraphQLObjectType({
+const UserLoginType = new GraphQLObjectType({ // Not sure what exactly is happening here, maybe auth?
   name: 'userAuth',
   description: 'User Authentication Type',
 
@@ -29,7 +29,7 @@ const UserLoginType = new GraphQLObjectType({
 })
 
 // User Gender type
-const UserGenderType = new GraphQLObjectType({
+const UserGenderType = new GraphQLObjectType({ // Not sure what exactly is happening here, maybe a schema for genders?
   name: 'userGender',
   description: 'User Gender Type',
 
