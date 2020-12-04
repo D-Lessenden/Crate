@@ -99,6 +99,7 @@ Item.propTypes = {
 }
 
 // Component State
+// example of redux 
 function itemState(state) {
   return {
     user: state.user
