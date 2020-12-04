@@ -1,3 +1,4 @@
+// Largely the same as the mutations from modules/crate
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
