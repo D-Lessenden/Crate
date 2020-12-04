@@ -1,5 +1,5 @@
 'use strict';
-
+// Just like in rails, seed file used to populate data in the database
 const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');
@@ -7,6 +7,7 @@ const params = require('../config/params.json');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [
+      // insult multiple records into a table 
       {
         name: 'The Admin',
         email: 'admin@crate.com',
