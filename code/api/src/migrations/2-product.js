@@ -1,3 +1,4 @@
+// Largely the same as user migration.
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('products', {
