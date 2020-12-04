@@ -1,6 +1,7 @@
 'use strict'
 
 // Product
+// Outlines the object and the datatypes 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('products', {
     name: {
