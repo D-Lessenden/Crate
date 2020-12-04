@@ -1,4 +1,5 @@
 'use strict'
+// Largely the same as the model from modules/crate
 
 // User
 module.exports = function(sequelize, DataTypes) {
