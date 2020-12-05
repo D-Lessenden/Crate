@@ -1,3 +1,4 @@
+//  Similar to a rails controller action "create"
 // Imports
 import { GraphQLString, GraphQLInt } from 'graphql'
 
@@ -50,7 +51,7 @@ export const crateRemove = {
   args: {
     id: {
       name: 'id',
-      // Need the id in order to remove crate 
+      // Need the id in order to remove crate
       type: GraphQLInt
     }
   },
