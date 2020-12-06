@@ -77,3 +77,8 @@ export async function remove(parentValue, { id }) {
 export async function getGenders() {
   return Object.values(params.user.gender)
 }
+
+// user style
+export async function getStyle() {
+  return Object.values(params.user.style)
+}
