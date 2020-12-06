@@ -26,6 +26,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      //Add style
+      style: {
+        type: Sequelize.INTEGER
       }
     });
   },
