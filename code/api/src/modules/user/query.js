@@ -47,3 +47,9 @@ export const userGenders = {
   type: new GraphQLList(UserGenderType),
   resolve: getGenders
 }
+
+// user style
+export const userStyle = {
+  type: new GraphQLList(UserStyleType),
+  resolve: getStyle
+}
