@@ -9,6 +9,8 @@ import { routeApi } from '../../../setup/routes'
 export const SURVEY_GET_ITEMS_REQUEST = 'Survey/GET_ITEMS_REQUEST'
 export const SURVEY_GET_ITEMS_RESPONSE = 'Survey/GET_ITEMS_RESPONSE'
 export const SURVEY_GET_ITEMS_FAILURE = 'Survey/GET_ITEMS_FAILURE'
+export const ITEM_SELECT = 'Survey/ITEM_SELECT'
+export const ITEM_DESELECT = 'Survey/ITEM_DESELECT'
 
 export const getSurveyItems = (clothingType) => {
 
@@ -50,3 +52,15 @@ export const getSurveyItems = (clothingType) => {
     })
   }
 } 
+
+export const updateSelectedItems = (item, willAdd) => {
+  return (dispatch) => {
+    dispatch(
+      {
+        type: willAdd ? ITEM_SELECT : ITEM_DESELECT,
+        item
+      }
+    )
+  }
+}
+
