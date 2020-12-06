@@ -14,6 +14,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     role: {
       type: DataTypes.TEXT
+    },
+    // Add in style
+    style: {
+      type: DataTypes.INTEGER
     }
   })
 
