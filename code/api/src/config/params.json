@@ -25,6 +25,44 @@
         "id": 2,
         "name": "Female"
       }
+    },
+    "style": {
+      "classic": {
+        "id": 1,
+        "name": "Classic"
+      },
+      "modern": {
+        "id": 2,
+        "name": "Modern"
+      },
+      "formal": {
+        "id": 3,
+        "name": "Formal"
+      },
+      "casual": {
+        "id": 4,
+        "name": "Casual"
+      },
+      "adaptable": {
+        "id": 5,
+        "name": "Adaptable"
+      },
+      "formal_classic": {
+        "id": 6,
+        "name": "Formal but Classic"
+      },
+      "formal_modern": {
+        "id": 7,
+        "name": "Formal but Modern"
+      },
+      "casual_classic": {
+        "id": 8,
+        "name": "Casual but Classic"
+      },
+      "casual_modern": {
+        "id": 9,
+        "name": "Casual but Modern"
+      }
     }
   }
 }
