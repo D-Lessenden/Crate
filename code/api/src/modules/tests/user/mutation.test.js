@@ -8,24 +8,7 @@ describe('user mutations', () => {
         server = testServer;
     })
 
-    // it('create a new user', async (done) => {
-    //     const response = await request(server)
-    //         .post('/graphql')
-    //         .send({ query: 'mutation { userSignup(name:"bob" email:"test@test.com" password:"123") { name email password } }' })
-    //         .expect(200);
-    //     done();
-    // });
-    //
-    // it('delete an existing user', async (done) => {
-    //     const response = await request(server)
-    //         .post('/graphql')
-    //         .send({ query: 'mutation { userRemove(id:3) { id } }' })
-    //         .expect(200);
-    //         console.log(response.body);
-    //     done();
-    // });
-
-    it('can set a users style', async (done) => {
+    it('can set a users style to casual', async (done) => {
         const response = await request(server)
             .post('/graphql')
             .send({ query: 'mutation { setStyle(id: 1 style:"casual") { style id } }' })
@@ -33,8 +16,24 @@ describe('user mutations', () => {
           expect(response.body).toMatchObject({
             data: {
               setStyle: {
-                style: null, // This needs refactored so that null is not returned
-                id: null
+                style: "casual",
+                id: 1
+              }
+            }
+          })
+        done();
+    });
+
+    it('can set a users style to formal', async (done) => {
+        const response = await request(server)
+            .post('/graphql')
+            .send({ query: 'mutation { setStyle(id: 1 style:"formal") { style id } }' })
+            .expect(200);
+          expect(response.body).toMatchObject({
+            data: {
+              setStyle: {
+                style: "formal",
+                id: 1
               }
             }
           })

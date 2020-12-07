@@ -17,7 +17,6 @@ const UserType = new GraphQLObjectType({
     style: { type: GraphQLString },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString },
-    style: { type: GraphQLString }
   })
 })
 
