@@ -1,13 +1,15 @@
 // App Imports
 import { APP_URL_API } from '../config/env'
 import admin from './admin'
+import crates from './crate'
 import home from './home'
-import user from './user'
 import product from './product'
-import crate from './crate'
+import result from './result'
+import survey from './survey'
+import user from './user'
 
 // Combined routes
-export const routes = Object.assign(admin, home, user, product, crate)
+export const routes = Object.assign(admin, crates, home, product, result, survey, user)
 
 // API Routes
 export const routeApi = APP_URL_API
