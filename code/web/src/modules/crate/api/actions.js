@@ -1,12 +1,12 @@
 // Imports
-import axios from 'axios' // The library used for requests and responses
-import { query, mutation } from 'gql-query-builder' // Library from original author of this project that includes templates for GraphQL
+import axios from 'axios'                           // async fetch library
+import { query, mutation } from 'gql-query-builder' // graphQL interfacing templates
 
 // App Imports
-import { routeApi } from '../../../setup/routes' // Relative path to send our requests
+import { routeApi } from '../../../setup/routes'    // fetch url
 
 // Actions Types
-// Defining and exporting variables for our switch conditions for our reducers
+// Dispatch Typing Values / switch values
 export const CRATES_GET_LIST_REQUEST = 'CRATES/GET_LIST_REQUEST'
 export const CRATES_GET_LIST_RESPONSE = 'CRATES/GET_LIST_RESPONSE'
 export const CRATES_GET_LIST_FAILURE = 'CRATES/GET_LIST_FAILURE'
@@ -17,23 +17,27 @@ export const CRATES_GET_FAILURE = 'CRATES/GET_FAILURE'
 // Actions
 
 // Get list of crates
+// Default to descending, but actually set to ascending in the code
 export function getList(orderBy = 'DESC', isLoading = true) {
+
+  // return a function that takes a callback called displatch. dispatch controls the redux store
   return dispatch => {
-    // Sets state to loading until post resolves
     dispatch({
       type: CRATES_GET_LIST_REQUEST,
       error: null,
       isLoading
     })
-    // Gets our crates from the API
+
+    // this is the fetch to server
     return axios.post(routeApi, query({
-      operation: 'crates',
-      variables: { orderBy },
-      fields: ['id', 'name', 'description', 'createdAt', 'updatedAt']
+      operation: 'crates', // our endpoint
+      variables: { orderBy },  // argument we pass
+      fields: ['id', 'name', 'description', 'createdAt', 'updatedAt'] // tell graphQL what we want
     }))
       .then(response => {
         if (response.status === 200) {
-          // Set state to successful list response
+
+          // redux - successful response
           dispatch({
             type: CRATES_GET_LIST_RESPONSE,
             error: null,
@@ -45,7 +49,8 @@ export function getList(orderBy = 'DESC', isLoading = true) {
         }
       })
       .catch(error => {
-        // Set state to failed list response
+
+        // redux - sad path
         dispatch({
           type: CRATES_GET_LIST_FAILURE,
           error: 'Some error occurred. Please try again.',
@@ -55,23 +60,27 @@ export function getList(orderBy = 'DESC', isLoading = true) {
   }
 }
 
+
 // Get single crate
+// slug is a key-identifier for a certain crate
 export function get(slug, isLoading = true) {
+
+  // redux - isLoading
   return dispatch => {
-    // Sets state to isLoading until post resolves
     dispatch({
       type: CRATES_GET_REQUEST,
       isLoading
     })
 
-    // Gets a crate from the API
+    // fetch
     return axios.post(routeApi, query({
-      operation: 'crate',
-      variables: { slug },
-      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']
+      operation: 'crate',  // our 'endpoint'
+      variables: { slug }, // argument we pass
+      fields: ['id', 'name', 'slug', 'description', 'image', 'createdAt']   // tell graphQL what we want
     }))
       .then(response => {
-        // Set state to successful crate response
+
+        // redux happy path
         dispatch({
           type: CRATES_GET_RESPONSE,
           error: null,
@@ -80,7 +89,8 @@ export function get(slug, isLoading = true) {
         })
       })
       .catch(error => {
-        // Set state to failed crate response
+
+        // redux sad path
         dispatch({
           type: CRATES_GET_FAILURE,
           error: 'Some error occurred. Please try again.',

@@ -1,29 +1,31 @@
 // Imports
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Helmet } from 'react-helmet'
+import React, { PureComponent } from 'react'            // Frontend framework
+import PropTypes from 'prop-types'                      // Prop validating
+import { connect } from 'react-redux'                   // connect to the redux store
+import { Helmet } from 'react-helmet'                   // History Object
 
 // UI Imports
+// HTML Style-embedded Component Templates
 import { Grid, GridCell } from '../../ui/grid'
 import { H3 } from '../../ui/typography'
 import { grey, grey2 } from '../../ui/common/colors'
 
 // App Imports
-import { getList as getCratesList } from './api/actions'
-import Loading from '../common/Loading'
-import EmptyMessage from '../common/EmptyMessage'
-import CrateItem from './Item'
+import { getList as getCratesList } from './api/actions'  // fetch requests from the server
+import Loading from '../common/Loading'                   // loading component
+import EmptyMessage from '../common/EmptyMessage'         // message component
+import CrateItem from './Item'                            // component for a single crate item
 
 // Component
 class List extends PureComponent {
 
-  // Runs on server only for SSR
+  // Runs on server only for SSR - server-side-rendering
   static fetchData({ store }) {
     return store.dispatch(getCratesList('ASC'))
   }
 
   // Runs on client only
+  // On load, fetch crateData in ascending order
   componentDidMount() {
     this.props.getCratesList('ASC')
   }
@@ -74,10 +76,12 @@ List.propTypes = {
 }
 
 // Component State
+// redux
 function listState(state) {
   return {
     crates: state.crates
   }
 }
 
+// redux state management / prop management
 export default connect(listState, { getCratesList })(List)

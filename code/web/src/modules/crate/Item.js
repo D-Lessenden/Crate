@@ -1,46 +1,44 @@
 // Imports
-// This is for a single item 
-import React, { PureComponent } from 'react' //imports react and PureComponent
-import PropTypes from 'prop-types' //to vaildate typing for the props 
-import { connect } from 'react-redux' //connects the redux store 
-import { Link, withRouter } from 'react-router-dom' 
-/* link does not seem to be used right 
-now, withRouter lets you use the histoty object */
+import React, { PureComponent } from 'react'                  // Frontend framwork
+import PropTypes from 'prop-types'                            // Prop validating
+import { connect } from 'react-redux'                         // Gives access to Redux store
+import { Link, withRouter } from 'react-router-dom'           // Interaction with 'history' object
 
-// UI Imports
-// Imports the style embedded HTML elemtents 
-import Card from '../../ui/card/Card' 
+// UI Imports - These are all style-embedded HTML components
+import Card from '../../ui/card/Card'
 import Button from '../../ui/button/Button'
 import H4 from '../../ui/typography/H4'
 import Icon from '../../ui/icon'
 import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
-import { APP_URL } from '../../setup/config/env' // The root path
-import userRoutes from '../../setup/routes/user' // Has the routing objects for the specific user path 
-import { messageShow, messageHide } from '../common/api/actions' //are action that show the pop up message confirming subscribe
-import { create } from '../subscription/api/actions' // return a distpatch callback funtion that post the crate using Axios 
+import { APP_URL } from '../../setup/config/env'               // This is the relative website path
+import userRoutes from '../../setup/routes/user' // Displays the top buttons. Toggles if the user is authenticated or not
+import { messageShow, messageHide } from '../common/api/actions'// This controls the pop-up message
+import { create } from '../subscription/api/actions'            // This is our interaction with the server to post a new subscription
 
 // Component
-//PureComponent are class based componets that can give a speed boost, minmize the rerender amout of a componet
 class Item extends PureComponent {
 
   constructor(props) {
     super(props)
-    //the super might be coming as deprected due to the PureComponent
+    // isLoading controls the button disabled state. true corresponds to disabled
     this.state = {
-      isLoading: false // controlls the button disabled state 
+      isLoading: false
     }
   }
 
-
+  // this is the function that gets fired when the subscribe button is clicked
   onClickSubscribe = (crateId) => {
+    // disable button
     this.setState({
-      isLoading: true //disabling the button via setting to true
+      isLoading: true
     })
-    // invokes messageShow
+
+    // show pop up message
     this.props.messageShow('Subscribing, please wait...')
-    // invokes the create action to post a crate to the API 
+
+    // post to server.
     this.props.create({ crateId })
       .then(response => {
         if (response.data.errors && response.data.errors.length > 0) {
@@ -48,21 +46,24 @@ class Item extends PureComponent {
         } else {
           this.props.messageShow('Subscribed successfully.')
 
+          // this navigates to the subscriptions page when successfully subscribing
           this.props.history.push(userRoutes.subscriptions.path)
         }
       })
       .catch(error => {
-        this.props.messageShow('There was some error subscribing to this crate. Please try again.') 
-      })// provides error handling
+        this.props.messageShow('There was some error subscribing to this crate. Please try again.')
+      })
+      // button is enabled again
       .then(() => {
         this.setState({
-          isLoading: false 
-        }) //enables the button 
+          isLoading: false
+        })
 
+        // after 5 seconds, if there are any messages, hide the message
         window.setTimeout(() => {
           this.props.messageHide()
         }, 5000)
-      }) //hides the loading message after 5 seconds 
+      })
   }
 
   render() {
@@ -105,13 +106,12 @@ Item.propTypes = {
 }
 
 // Component State
-// itemState is used in connect that is the behavior of the redux, sets the state 
+// this is the Redux behavior
 function itemState(state) {
   return {
     user: state.user
   }
 }
 
-// mapStateToProps === itemState and mapDispatchToProps === { create, messageShow, messageHide } 
-// withRouter is for the history object 
+// this 1.) attaches the Item compontent with a history object and then 2.) connects it to the Redux Store
 export default connect(itemState, { create, messageShow, messageHide })(withRouter(Item))
