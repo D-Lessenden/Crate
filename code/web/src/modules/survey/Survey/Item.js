@@ -28,7 +28,7 @@ class Item extends PureComponent {
   }
 
   handleItemClick = () => {
-    this.state.selected = !this.state.selected;
+    this.setState({ selected: !this.state.selected });
     updateStoredItems(this.props.item, this.state.selected)
   }
 
