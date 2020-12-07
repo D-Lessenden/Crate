@@ -58,6 +58,20 @@ export async function login(parentValue, { email, password }) {
   }
 }
 
+// set style
+export async function updateStyle(parentValue, { style, id }) {
+  if (style !== "") {
+    return await models.User.update(
+      {
+        style
+      },
+      { where: { id } }
+    )
+  } else {
+    throw new Error(`You must enter a style to set a user's style`)
+  }
+}
+
 // Get by ID
 export async function getById(parentValue, { id }) {
   return await models.User.findOne({ where: { id } })
