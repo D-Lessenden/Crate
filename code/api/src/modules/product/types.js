@@ -1,5 +1,5 @@
 // Imports
-import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList } from 'graphql'
 
 // Product type
 const ProductType = new GraphQLObjectType({
@@ -15,7 +15,8 @@ const ProductType = new GraphQLObjectType({
     description: { type: GraphQLString },
     image: { type: GraphQLString },
     createdAt: { type: GraphQLString },
-    updatedAt: { type: GraphQLString }
+    updatedAt: { type: GraphQLString },
+    score: { type: new GraphQLList(GraphQLInt) }
   })
 })
 
