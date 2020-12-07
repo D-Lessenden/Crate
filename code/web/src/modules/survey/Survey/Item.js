@@ -1,20 +1,19 @@
 // Imports
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 // UI Imports
-import Card from '../../ui/card/Card'
-import H4 from '../../ui/typography/H4'
-import Tile from '../../ui/image'
-import { white, grey2, black, primary, primaryAccent } from '../../ui/common/colors'
+import Card from '../../../ui/card/Card'
+import H4 from '../../../ui/typography/H4'
+import Tile from '../../../ui/image'
+import { white, grey2, black, primary, primaryAccent } from '../../../ui/common/colors'
 
 // App Imports
-import { APP_URL } from '../../setup/config/env'
-import userRoutes from '../../setup/routes/user'
-import { messageShow, messageHide } from '../common/api/actions'
-import { updateStoredItems } from '../api/actions'
+import { APP_URL } from '../../../setup/config/env'
+import userRoutes from '../../../setup/routes/user'
+import { updateSelectedItems } from '../api/actions'
 
 // Component
 class Item extends PureComponent {
@@ -33,8 +32,8 @@ class Item extends PureComponent {
   }
 
   render() {
-    <img 
-      src={this.props.item.image} 
+    <img
+      src={this.props.item.image}
       style={{
         height: '5em',
         width: '5em',
@@ -53,4 +52,4 @@ function itemState(state) {
   }
 }
 
-export default connect(itemState, { messageShow, messageHide })(withRouter(Item))
+export default connect(itemState)(withRouter(Item))

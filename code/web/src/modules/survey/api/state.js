@@ -1,8 +1,10 @@
+// Imports
+
 // Actions Types
-import { 
-  SURVEY_GET_ITEMS_REQUEST, 
-  SURVEY_GET_ITEMS_RESPONSE, 
-  SURVEY_GET_ITEMS_FAILURE, 
+import {
+  SURVEY_GET_ITEMS_REQUEST,
+  SURVEY_GET_ITEMS_RESPONSE,
+  SURVEY_GET_ITEMS_FAILURE,
   ITEM_SELECT,
   ITEM_DESELECT
 } from './actions'
@@ -15,22 +17,26 @@ const surveyItemsInitialState = {
 
 export const surveyItems = (state = surveyItemsInitialState, action) => {
   switch (action.type){
-    case SURVEY_GET_ITEMS_REQUEST: 
+    case SURVEY_GET_ITEMS_REQUEST:
       return {
-        ...state, isLoading: action.isLoading,
+        ...state,
+        isLoading: action.isLoading,
         error: null,
       }
-    case SURVEY_GET_ITEMS_RESPONSE: 
+    case SURVEY_GET_ITEMS_RESPONSE:
       return {
         ...state, isLoading: false,
         error: action.error,
         surveyItems: action.surveyItems,
       }
-    case SURVEY_GET_ITEMS_FAILURE: 
+    case SURVEY_GET_ITEMS_FAILURE:
       return {
         ...state, isLoading: false,
         error: action.error,
       }
+
+      default:
+        return state
   }
 }
 
@@ -53,5 +59,8 @@ export const selectedItems = (state = selectedItemsInitialState, action) => {
       return {
         ...state, selectedItems: copyOfItems
       }
+
+      default:
+        return state
   }
 }
