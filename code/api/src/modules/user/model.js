@@ -1,5 +1,5 @@
 'use strict'
-
+// Model for user. Defines the types they are in the DB. Also defines associations between other resources such as Subscriptions
 // User
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define('users', {

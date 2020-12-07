@@ -14,9 +14,9 @@ export async function create(parentValue, { name, email, password }) {
 
   if (!user) {
     // User does not exists
-    const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds)
+    const passwordHashed = await bcrypt.hash(password, serverConfig.saltRounds) // Encrypts password
 
-    return await models.User.create({
+    return await models.User.create({ // Creates a user to DB and returns that information back
       name,
       email,
       password: passwordHashed
@@ -43,14 +43,14 @@ export async function login(parentValue, { email, password }) {
       // Incorrect password
       throw new Error(`Sorry, the password you entered is incorrect. Please try again.`)
     } else {
-      const userDetailsToken = {
+      const userDetailsToken = { // Creates a new token for user logging in to store on server for future use.
         id: userDetails.id,
         name: userDetails.name,
         email: userDetails.email,
         role: userDetails.role
       }
 
-      return {
+      return { // Returns the details of the user and stores token made above
         user: userDetails,
         token: jwt.sign(userDetailsToken, serverConfig.secret)
       }

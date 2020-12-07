@@ -6,6 +6,8 @@ const UserType = new GraphQLObjectType({
   name: 'user',
   description: 'User type',
 
+
+  // defines a skeletal structure for return object and data types for user
   fields: () => ({
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
