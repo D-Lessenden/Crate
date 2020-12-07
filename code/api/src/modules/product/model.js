@@ -20,6 +20,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     image: {
       type: DataTypes.TEXT
+    },
+    score: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER)
     }
   })
 }
