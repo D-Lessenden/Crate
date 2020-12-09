@@ -1,5 +1,5 @@
 'use strict';
-
+// creates seed data for development/production database
 const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');

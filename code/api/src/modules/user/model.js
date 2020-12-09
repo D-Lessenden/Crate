@@ -1,5 +1,4 @@
 'use strict'
-
 // User
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define('users', {
@@ -16,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT
     },
     style: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     }
   })
 

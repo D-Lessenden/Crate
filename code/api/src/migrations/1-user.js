@@ -1,3 +1,4 @@
+// Creates new table for users into the DB with the following variables
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('users', {
@@ -29,6 +30,7 @@ module.exports = {
       }
     });
   },
+  // Provides a way to rollback if needed
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('users');
   }
