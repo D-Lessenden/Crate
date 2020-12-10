@@ -32,17 +32,20 @@ class Item extends PureComponent {
   }
 
   render() {
-    <img
-      src={this.props.item.image}
-      style={{
-        height: '5em',
-        width: '5em',
-        borderStyle: 'solid',
-        borderWidth: '0.5em',
-        borderColor: this.state.selected ? primaryAccent : primary
-      }}
-      onClick={this.updateStoredItems}>
-    </img>
+    return (
+      <img
+        src={this.props.item.image}
+        alt={this.props.item.image}
+        style={{
+          height: '5em',
+          width: '5em',
+          borderStyle: 'solid',
+          borderWidth: '0.5em',
+          borderColor: this.state.selected ? primaryAccent : primary
+        }}
+        onClick={this.updateStoredItems}>
+      </img>
+    )
   }
 }
 
