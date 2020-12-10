@@ -5,6 +5,8 @@ import { MemoryRouter, Router } from "react-router-dom";
 import { createMemoryHistory } from 'history';
 import userEvent from '@testing-library/user-event';
 import Item from '../Item';
+import { Provider } from 'react-redux';
+import { store } from '../../../../setup/store';
 
 describe('Survey Page', () => {
   let image, item;
@@ -14,9 +16,11 @@ describe('Survey Page', () => {
       score: 9,
     }; 
     render(
-      <MemoryRouter>
-        <Item item = { item }/>
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter>
+          <Item item={item} />
+        </MemoryRouter>
+      </Provider>
     )
     image = screen.getByRole("img") 
   })
@@ -27,7 +31,7 @@ describe('Survey Page', () => {
   
   it('should change border color on click', () => {
     userEvent.click(image)
-    expect(image).toHaveStyle({borderColor: "#CE9FFC"})
+    const clickedImage = screen.getByRole("img")
+    expect(clickedImage).toHaveStyle({borderColor: "#CE9FFC"})
   })
-  
 })
