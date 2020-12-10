@@ -21,16 +21,10 @@ describe('users query', () => {
       .post('/graphql')
       .send({query: `{user(id:1) { email name role createdAt} }`})
       .expect(200)
-    expect(response.body).toMatchObject({
-      data: {
-        user: {
-          email: 'admin@crate.com',
-          name: 'The Admin',
-          role: 'ADMIN',
-          createdAt: '1607446829755',
-        }
-      }
-    });
+      expect(response.body.data.user.email).toBe('admin@crate.com')
+      expect(response.body.data.user.name).toBe('The Admin')
+      expect(response.body.data.user.role).toBe('ADMIN')
+      expect(response.body.data.user).toHaveProperty('createdAt')
     done();
   })
 
@@ -41,5 +35,4 @@ describe('users query', () => {
       .expect(400)
     done();
   })
-
 })
