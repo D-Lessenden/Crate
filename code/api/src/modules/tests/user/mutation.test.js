@@ -3,10 +3,31 @@ import request from 'supertest';
 import testServer from '../utils.js';
 
 describe('user mutations', () => {
-    let server;
+    let server, id;
     beforeEach(() => {
         server = testServer;
     })
+
+    it('a user can sign up', async (done) => {
+        const response = await request(server)
+            .post('/graphql')
+            .send({ query: 'mutation { userSignup(name:"bilbo" email:"bilbo@email.com" password:"bilbodagreatest") { name email id } }' })
+            .expect(200);
+          expect(response.body.data.userSignup.name).toBe("bilbo")
+          expect(response.body.data.userSignup.email).toBe("bilbo@email.com")
+          id = response.body.data.userSignup.id
+        done();
+    });
+
+    it('a user can be deleted', async (done) => {
+        const response = await request(server)
+            .post('/graphql')
+            .send({ query: `mutation { userRemove(id:${id}) { name email } }` })
+            .expect(200);
+          expect(response.body.data.userRemove.name).toBe(null)
+          expect(response.body.data.userRemove.email).toBe(null)
+        done();
+    });
 
     it('can set a users style to casual', async (done) => {
         const response = await request(server)
