@@ -38,7 +38,7 @@ export async function getRelated(parentValue, { productId }) {
       id: { [models.Sequelize.Op.not]: productId }
     },
     limit: 3,
-    order: [[models.Sequelize.fn('RAND')]] // mock related products by showing random products
+    order: [[models.Sequelize.fn('RANDOM')]] // mock related products by showing random products
   })
 }
 
@@ -61,7 +61,7 @@ export async function create(parentValue, { name, slug, description, type, gende
 // Update product
 export async function update(parentValue, { id, name, slug, description, type, gender, image }, { auth }) {
   if(auth.user && auth.user.role === params.user.roles.admin) {
-    return await models.Product.update(
+    await models.Product.update(
       {
         name,
         slug,
@@ -72,6 +72,7 @@ export async function update(parentValue, { id, name, slug, description, type, g
       },
       { where: { id } }
     )
+    return await models.Product.findOne({ where: { id: id } })
   } else {
     throw new Error('Operation denied.')
   }
