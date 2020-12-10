@@ -12,44 +12,46 @@ export const SURVEY_GET_ITEMS_FAILURE = 'Survey/GET_ITEMS_FAILURE'
 export const ITEM_SELECT = 'Survey/ITEM_SELECT'
 export const ITEM_DESELECT = 'Survey/ITEM_DESELECT'
 
-export const getSurveyItems = (clothingType) => {
+export function getSurveyItemsFromAPI(clothingType) {
+  axios.post(routeApi, query({
+    operation:"getSurveyItems",
+    variables: { clothingType },
+    fields: ["image", "score"]
+  }))
+}
 
+export function getSurveyItems(clothingType) {
   return (dispatch) => {
-    dispatch(
-      {
-        type: SURVEY_GET_ITEMS_REQUEST,
-        error: null,
-        isLoading: true,
-      }
-    )
-    return axios.post(routeApi, query({
-      operation:"getSurveyItems",
-      variables: {
-        clothingType
-      },
-      fields:["image", "score"]
-    }))
-    .then(response => {
-      if (response.status === 200) {
-        dispatch(
-          {
+    dispatch({
+      type: SURVEY_GET_ITEMS_REQUEST,
+      error: null,
+      isLoading: true,
+    })
+    
+    return getSurveyItemsFromAPI(clothingType)
+      .then(response => {
+        if (response.status === 200) {
+          dispatch({
             type: SURVEY_GET_ITEMS_RESPONSE,
             error: null,
             isLoading: false,
             surveyItems: response.data.data.surveyItems,
-          }
-        )
-      } else {
-        console.error(response)
-      }
-    })
-    .catch(error => {
-      dispatch({
-        type: SURVEY_GET_ITEMS_FAILURE,
-        error: "Something went wrong, try reloading the page",
-        isLoading: false,
+          })
+        } else {
+          dispatch({
+            type: SURVEY_GET_ITEMS_FAILURE,
+            error: "Something went wrong, try reloading the page",
+            isLoading: false,
+          })
+        }
       })
-    })
+      .catch(error => {
+        dispatch({
+          type: SURVEY_GET_ITEMS_FAILURE,
+          error: "Something went wrong, try reloading the page",
+          isLoading: false,
+        })
+      })
   }
 } 
 
