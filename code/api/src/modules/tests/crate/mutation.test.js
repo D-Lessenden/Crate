@@ -39,7 +39,10 @@ describe('crate mutations', () => {
             const response = await request(server)
                 .post('/graphql')
                 .send({ query: `mutation { crateRemove(id:${id}) { name } }` })
-                .expect(200);
+                .expect(200)
+                    expect(response.body).toMatchObject(
+                        { data: { crateRemove: { name: null } } }
+                    );
             done();
         })
     })
@@ -67,7 +70,6 @@ describe('crate mutations', () => {
                 .post('/graphql')
                 .send({ query: `mutation { crateRemove() { name } }` })
                 .expect(400);
-                console.log(response.body)
             done();
         })
     })
