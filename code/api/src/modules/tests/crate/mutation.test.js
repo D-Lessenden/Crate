@@ -8,9 +8,7 @@ describe('crate mutations', () => {
     })
 
     describe('happy-paths', () => {
-
         let id;
-
         it('create a crate', async (done) => {
             const response = await request(server)
                 .post('/graphql')
@@ -44,7 +42,34 @@ describe('crate mutations', () => {
                 .expect(200);
             done();
         })
+    })
 
+    describe('sad-path', () => {
+        it('create - missing needed arguments', async (done) => {
+            const response = await request(server)
+                .post('/graphql')
+                .send({ query: 'mutation { crateCreate() { id name description createdAt updatedAt } }' })
+                .expect(400);
+            done();
+        })
+
+        it('update - missing id argument', async (done) => {
+            const response = await request(server)
+                .post('/graphql')
+                .send({ query: `mutation { crateUpdate(name:"test" description:"advanced") { description } }` })
+                .expect(200);
+                    expect(response.body.errors[0].message).toEqual('WHERE parameter "id" has invalid "undefined" value')
+            done();
+        })
+
+        it('remove - missing id argument', async (done) => {
+            const response = await request(server)
+                .post('/graphql')
+                .send({ query: `mutation { crateRemove() { name } }` })
+                .expect(400);
+                console.log(response.body)
+            done();
+        })
     })
 
 })
