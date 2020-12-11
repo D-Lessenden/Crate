@@ -39,8 +39,10 @@ export async function update(parentValue, { id, name, description }, { auth }) {
         name,
         description
       },
-      {where: {id}}
-    )
+      {where: {id}, returning: true, plain: true}
+    ).then((response) => {
+      return response[1].dataValues
+      })
   } else {
     throw new Error('Operation denied.')
   }
