@@ -59,15 +59,15 @@ export async function login(parentValue, { email, password }) {
 }
 
 // set style
-export async function updateStyle(parentValue, { style, id }) {
-  if (style !== "") {
+  export async function updateStyle(parentValue, { style }, { auth }) { 
+  if (style !== "" && auth.user && auth.user.id > 0) {
     await models.User.update(
       {
         style
       },
-      { where: { id } }
+      {where: { id: auth.user.id } }
     );
-    return await models.User.findOne({ where: { id } })
+    return await models.User.findOne({ where: { id: auth.user.id } })
   } else {
     throw new Error(`You must enter a style to set a user's style`)
   }
