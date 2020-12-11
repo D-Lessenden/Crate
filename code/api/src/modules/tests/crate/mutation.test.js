@@ -24,8 +24,17 @@ describe('crate mutations', () => {
                     expect(response.body.data.crateCreate.createdAt).toBeTruthy()
                     expect(response.body.data.crateCreate).toHaveProperty('updatedAt')
                     expect(response.body.data.crateCreate.updatedAt).toBeTruthy();
-
             id = response.body.data.crateCreate.id;
+            done();
+        })
+
+        it('update a crate', async (done) => {
+            const response = await request(server)
+                .post('/graphql')
+                .send({ query: `mutation { crateUpdate(id:${id} name:"test" description:"advanced") { description } }` })
+                .expect(200)
+                console.log(response.body)
+                    expect(response.body.data.crateUpdate.description).toEqual("advanced");
             done();
         })
 
