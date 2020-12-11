@@ -5,70 +5,70 @@ module.exports = {
     return queryInterface.bulkInsert('surveys', [
       {
         type: 'bottom',
-        image: 'code/api/public/images/survey/classic/mens_pants_classic.jpeg',
+        image: '/images/survey/classic/mens_pants_classic.jpeg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/classic/mens_shoes_classic.jpg',
+        image: '/images/survey/classic/mens_shoes_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'full',
-        image: 'code/api/public/images/survey/classic/mens_suit_classic.jpg',
+        image: '/images/survey/classic/mens_suit_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'top',
-        image: 'code/api/public/images/survey/classic/mens_top_classic.jpg',
+        image: '/images/survey/classic/mens_top_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/classic/mens_watch_classic.jpg',
+        image: '/images/survey/classic/mens_watch_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/classic/womans_hat_classic.jpg',
+        image: '/images/survey/classic/womans_hat_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'bottom',
-        image: 'code/api/public/images/survey/classic/womans_pants_classic.jpg',
+        image: '/images/survey/classic/womans_pants_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/classic/womans_shoes_classic.jpg',
+        image: '/images/survey/classic/womans_shoes_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'top',
-        image: 'code/api/public/images/survey/classic/womans_top_classic.jpg',
+        image: '/images/survey/classic/womans_top_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'full',
-        image: 'code/api/public/images/survey/classic/womens_dress_classic.jpg',
+        image: '/images/survey/classic/womens_dress_classic.jpg',
         score: [-5, 0],
         createdAt: new Date(),
         updatedAt: new Date()

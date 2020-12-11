@@ -18,21 +18,23 @@ import { APP_URL } from '../../../setup/config/env'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import Item from './Item.js'
-import userRoutes from '../../../setup/routes/user'
+import surveyRoutes from '../../../setup/routes/survey'
 import { messageShow, messageHide } from '../../common/api/actions'
 import { getSurveyItems } from '../api/actions'
+import { setStyle } from '../../user/api/actions'
 
 // Component
 class List extends PureComponent {
 
   // Runs on server only for SSR
   static fetchData({ store }) {
-    return store.dispatch(getSurveyItems('Accessories'))
+    return store.dispatch(getSurveyItems('accessory'))
   }
 
   // Runs on client only
   componentDidMount() {
-    this.props.getSurveyItems('Accessories')
+    this.props.getSurveyItems('accessory')
+    this.props.setStyle('incomplete')
   }
 
   render() {
@@ -59,13 +61,29 @@ class List extends PureComponent {
               this.props.surveyItems.isLoading
                 ? <Loading/>
                 : this.props.surveyItems.surveyItems.length > 0
-                  ? this.props.surveyItems.surveyItems.map(item => (
-                    <div key={item.id} style={{ margin: '2em', float: 'left' }}>
+                  ? this.props.surveyItems.surveyItems.map((item, i) => (
+                    <div
+                      key={'item#'+i+'survey#'+this.props.match.params.page}
+                      style={{ margin: '2em', float: 'left' }}>
                       <Item item={item}/>
                     </div>
                   ))
                   : <EmptyMessage message="Something went wrong. Please go back and try again!" />
             }
+          </GridCell>
+        </Grid>
+
+        <Grid justifyCenter={true}>
+          <GridCell justifyCenter={true} style={{ padding: '2em', width: "50%"}}>
+            <Link to={surveyRoutes.survey.path( parseInt(this.props.match.params.page) - 1 )}>
+              <Button type="button" theme="secondary" disabled={this.props.match.params.page === '1'}>Back</Button>
+            </Link>
+          </GridCell>
+
+          <GridCell justifyRight={true} style={{ padding: '2em'}}>
+            <Link to={surveyRoutes.survey.path( parseInt(this.props.match.params.page) + 1 )}>
+              <Button type="button" theme="secondary" disabled={false}>Next</Button>
+            </Link>
           </GridCell>
         </Grid>
       </div>
@@ -86,4 +104,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getSurveyItems })(List)
+export default connect(listState, { getSurveyItems, setStyle })(List)

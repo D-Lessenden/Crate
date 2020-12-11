@@ -13,6 +13,7 @@ import { white, grey2, black } from '../../ui/common/colors'
 
 // App Imports
 import { APP_URL } from '../../setup/config/env'
+import surveyRoutes from '../../setup/routes/survey'
 import userRoutes from '../../setup/routes/user'
 import { messageShow, messageHide } from '../common/api/actions'
 import { create } from '../subscription/api/actions'
@@ -42,7 +43,12 @@ class Item extends PureComponent {
         } else {
           this.props.messageShow('Subscribed successfully.')
 
-          this.props.history.push(userRoutes.subscriptions.path)
+
+          if (this.props.user.details.style !== null) {
+            this.props.history.push(userRoutes.subscriptions.path)
+          } else {
+            this.props.history.push(surveyRoutes.survey.path(1))
+          }
         }
       })
       .catch(error => {

@@ -6,8 +6,7 @@ import home from './home'
 import product from './product'
 import survey from './survey'
 import user from './user'
-console.log(crates)
-console.log(product)
+
 // Combined routes
 export const routes = Object.assign(admin, crates, home, product, survey, user)
 

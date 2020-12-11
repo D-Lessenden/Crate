@@ -8,35 +8,35 @@ module.exports = {
       // Mens
       {
         type: 'bottom',
-        image: 'code/api/public/images/survey/modern/mens_pants_modern.jpg',
+        image: '/images/survey/modern/mens_pants_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/modern/mens_shoes_modern.jpg',
+        image: '/images/survey/modern/mens_shoes_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'full',
-        image: 'code/api/public/images/survey/modern/mens_suit_modren.jpg',
+        image: '/images/survey/modern/mens_suit_modren.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'top',
-        image: 'code/api/public/images/survey/modern/mens_top_modren.jpg',
+        image: '/images/survey/modern/mens_top_modren.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/modern/mens_watch_modern.jpg',
+        image: '/images/survey/modern/mens_watch_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
@@ -44,42 +44,42 @@ module.exports = {
       // Womens
       {
         type: 'full',
-        image: 'code/api/public/images/survey/modern/woman_dress_modern.jpg',
+        image: '/images/survey/modern/woman_dress_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/modern/woman_shoes_morden.jpg',
+        image: '/images/survey/modern/woman_shoes_morden.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/modern/womans_hat_modern.jpg',
+        image: '/images/survey/modern/womans_hat_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'bottom',
-        image: 'code/api/public/images/survey/modern/womans_pants_modern.jpg',
+        image: '/images/survey/modern/womans_pants_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'top',
-        image: 'code/api/public/images/survey/modern/womans_top_modern.jpg',
+        image: '/images/survey/modern/womans_top_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'accessory',
-        image: 'code/api/public/images/survey/modern/womans_watch_modern.jpg',
+        image: '/images/survey/modern/womans_watch_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
