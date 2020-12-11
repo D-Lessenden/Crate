@@ -22,10 +22,11 @@ export const getSurveyItems = (clothingType) => {
         isLoading: true,
       }
     )
+
     return axios.post(routeApi, query({
       operation:"getSurveyItems",
       variables: {
-        clothingType
+        type: clothingType
       },
       fields:["image", "score"]
     }))
@@ -36,11 +37,11 @@ export const getSurveyItems = (clothingType) => {
             type: SURVEY_GET_ITEMS_RESPONSE,
             error: null,
             isLoading: false,
-            surveyItems: response.data.data.surveyItems,
+            surveyItems: response.data.data.getSurveyItems,
           }
         )
       } else {
-        console.error(response)
+        console.error('SURVEY ITEM RESPONSE ERROR')
       }
     })
     .catch(error => {
@@ -51,7 +52,7 @@ export const getSurveyItems = (clothingType) => {
       })
     })
   }
-} 
+}
 
 export const updateSelectedItems = (item, willAdd) => {
   return (dispatch) => {
@@ -63,4 +64,3 @@ export const updateSelectedItems = (item, willAdd) => {
     )
   }
 }
-
