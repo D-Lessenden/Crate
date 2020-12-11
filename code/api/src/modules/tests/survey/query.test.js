@@ -96,7 +96,7 @@ describe('survey query', () => {
 
       results.forEach(result => expect(result).toHaveProperty('image'))
       results.forEach(result => expect(result.image).not.toBe(null))
-      
+
       expect(response.body.data.getSurveyItems.length).toBe(8)
     done();
   })
