@@ -8,7 +8,10 @@ server.use("/", graphqlHTTP({
     graphiql: false,
     context: {
       auth: {
-        user: { id: 1 },
+        user: { 
+          id: 1,
+           role: 'ADMIN'
+        },
         isAuthenticated: true
       }
     }
