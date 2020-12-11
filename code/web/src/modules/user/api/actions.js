@@ -17,6 +17,7 @@ export const LOGOUT = 'AUTH/LOGOUT'
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
   if (token) {
+    console.log(user)
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
@@ -36,7 +37,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {name, email, role, style}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -74,6 +75,18 @@ export function loginSetUserLocalStorageAndCookie(token, user) {
 
   // Set cookie for SSR
   cookie.set('auth', { token, user }, { path: '/' })
+}
+
+export function setStyle(style) {
+  return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'setStyle',
+      variables: {
+        style: style
+      },
+      fields: ['style']
+    }))
+  }
 }
 
 // Register a user

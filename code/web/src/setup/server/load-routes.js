@@ -15,9 +15,7 @@ import { routes } from '../routes'
 import { setUser } from '../../modules/user/api/actions'
 import App from '../client/App'
 import view from '../server/view'
-
 export default function (app) {
-  console.info('SETUP - Load routes..')
 
   // Store (new store for each request)
   const store = createStore(

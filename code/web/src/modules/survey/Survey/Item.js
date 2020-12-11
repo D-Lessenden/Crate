@@ -13,6 +13,7 @@ import { white, grey2, black, primary, primaryAccent } from '../../../ui/common/
 // App Imports
 import { APP_URL } from '../../../setup/config/env'
 import userRoutes from '../../../setup/routes/user'
+import { routeImage } from '../../../setup/routes'
 import { updateSelectedItems } from '../api/actions'
 
 // Component
@@ -27,22 +28,25 @@ class Item extends PureComponent {
   }
 
   handleItemClick = () => {
+    console.log(this.state.selected)
     this.setState({ selected: !this.state.selected });
-    updateStoredItems(this.props.item, this.state.selected)
+    updateSelectedItems(this.props.item, this.state.selected)
   }
 
   render() {
-    <img
-      src={this.props.item.image}
-      style={{
-        height: '5em',
-        width: '5em',
-        borderStyle: 'solid',
-        borderWidth: '0.5em',
-        borderColor: this.state.selected ? primaryAccent : primary
-      }}
-      onClick={this.updateStoredItems}>
-    </img>
+    return (
+      <img
+        src={routeImage + this.props.item.image}
+        style={{
+          height: '5em',
+          width: '5em',
+          borderStyle: 'solid',
+          borderWidth: '0.5em',
+          borderColor: this.state.selected ? primaryAccent : primary
+        }}
+        onClick={this.handleItemClick}>
+      </img>
+    )
   }
 }
 
