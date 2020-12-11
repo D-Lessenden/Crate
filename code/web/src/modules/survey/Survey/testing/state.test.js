@@ -83,24 +83,4 @@ describe('', () => {
     }
     expect(surveyReducers.selectedItems(mockState, mockUpdateSelectedItems)).toEqual({ selectedItems: [mockSurveyItems[0]] })
   })
-  // it('should be able to store and remove selected items', () => {
-  //   const mockAddSelectedItems = {
-  //     type: ITEM_SELECT,
-  //     item: {
-  //       image:"image1.jpg",
-  //       score:1,
-  //     }
-  //   }
-  //   const mockRemoveSelectedItems = {
-  //     type: ITEM_DESELECT,
-  //     item: {
-  //       image:"image1.jpg",
-  //       score:1,
-  //     }
-  //   }
-  //   let mockState = { 
-  //     selectedItems: [] 
-  //   }
-  //   expect(surveyReducers.selectedItems(mockState, mockRemoveSelectedItems)).toEqual({ selectedItems: [mockSurveyItems[0]] })
-  // })
 })
