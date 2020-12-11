@@ -13,11 +13,20 @@ describe('survey query', () => {
       .send({query: `{getSurveyItems(type:"top") { id type score image } }`})
       .expect(200)
       const results = response.body.data.getSurveyItems
+      // results.forEach(result => console.log(result))
       results.forEach(result => expect(result).toHaveProperty('id'))
+      results.forEach(result => expect(result.id).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('type'))
       results.forEach(result => expect(result.type).toBe('top'))
+      results.forEach(result => expect(result.type).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('score'))
+      results.forEach(result => expect(result.score).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('image'))
+      results.forEach(result => expect(result.image).not.toBe(null))
+
       expect(response.body.data.getSurveyItems.length).toBe(8)
     done();
   })
@@ -29,11 +38,20 @@ describe('survey query', () => {
       .expect(200)
       const results = response.body.data.getSurveyItems
       results.forEach(result => expect(result).toHaveProperty('id'))
+      results.forEach(result => expect(result.id).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('type'))
       results.forEach(result => expect(result.type).toBe('bottom'))
+      results.forEach(result => expect(result.type).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('score'))
+      results.forEach(result => expect(result.score).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('image'))
+      results.forEach(result => expect(result.image).not.toBe(null))
+
       expect(response.body.data.getSurveyItems.length).toBe(8)
+
     done();
   })
 
@@ -44,10 +62,18 @@ describe('survey query', () => {
       .expect(200)
       const results = response.body.data.getSurveyItems
       results.forEach(result => expect(result).toHaveProperty('id'))
+      results.forEach(result => expect(result.id).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('type'))
       results.forEach(result => expect(result.type).toBe('accessory'))
+      results.forEach(result => expect(result.type).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('score'))
+      results.forEach(result => expect(result.score).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('image'))
+      results.forEach(result => expect(result.image).not.toBe(null))
+
       expect(response.body.data.getSurveyItems.length).toBe(18)
     done();
   })
@@ -59,10 +85,18 @@ describe('survey query', () => {
       .expect(200)
       const results = response.body.data.getSurveyItems
       results.forEach(result => expect(result).toHaveProperty('id'))
+      results.forEach(result => expect(result.id).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('type'))
       results.forEach(result => expect(result.type).toBe('full'))
+      results.forEach(result => expect(result.type).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('score'))
+      results.forEach(result => expect(result.score).not.toBe(null))
+
       results.forEach(result => expect(result).toHaveProperty('image'))
+      results.forEach(result => expect(result.image).not.toBe(null))
+      
       expect(response.body.data.getSurveyItems.length).toBe(8)
     done();
   })
