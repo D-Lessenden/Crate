@@ -45,10 +45,6 @@ export const setStyle = {
     style: {
       name: 'style',
       type: GraphQLString
-    },
-    id: {
-      name: 'id',
-      type: GraphQLInt
     }
   },
   resolve: updateStyle
