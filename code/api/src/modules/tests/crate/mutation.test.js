@@ -8,10 +8,13 @@ describe('crate mutations', () => {
     })
 
     describe('happy-paths', () => {
+
+        let id;
+
         it('create a crate', async (done) => {
             const response = await request(server)
                 .post('/graphql')
-                .send({ query: 'mutation { crateCreate(name:"test" description:"basic") { name description createdAt updatedAt } }' })
+                .send({ query: 'mutation { crateCreate(name:"test" description:"basic") { id name description createdAt updatedAt } }' })
                 .expect(200)
                     expect(response.body.data.crateCreate).toHaveProperty('name')
                     expect(response.body.data.crateCreate.name).toBeTruthy()
@@ -21,6 +24,16 @@ describe('crate mutations', () => {
                     expect(response.body.data.crateCreate.createdAt).toBeTruthy()
                     expect(response.body.data.crateCreate).toHaveProperty('updatedAt')
                     expect(response.body.data.crateCreate.updatedAt).toBeTruthy();
+
+            id = response.body.data.crateCreate.id;
+            done();
+        })
+
+        it('remove a crate', async (done) => {
+            const response = await request(server)
+                .post('/graphql')
+                .send({ query: `mutation { crateRemove(id:${id}) { name } }` })
+                .expect(200);
             done();
         })
 
