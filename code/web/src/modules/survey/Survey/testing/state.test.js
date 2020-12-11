@@ -4,14 +4,12 @@ import '@testing-library/jest-dom';
 import { MemoryRouter, Router } from "react-router-dom";
 import { createMemoryHistory } from 'history';
 import userEvent from '@testing-library/user-event';
-import Item from '../Item';
 import { Provider } from 'react-redux';
 import { SURVEY_GET_ITEMS_RESPONSE, ITEM_SELECT, ITEM_DESELECT } from '../../api/actions'
 import { store } from '../../../../setup/store';
 
+import Item from '../Item';
 import * as surveyReducers from '../../api/state'
-
-
 
 describe('', () => {
   let mockState, mockSurveyItems;
