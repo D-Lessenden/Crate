@@ -33,7 +33,6 @@ describe('crate mutations', () => {
                 .post('/graphql')
                 .send({ query: `mutation { crateUpdate(id:${id} name:"test" description:"advanced") { description } }` })
                 .expect(200)
-                console.log(response.body)
                     expect(response.body.data.crateUpdate.description).toEqual("advanced");
             done();
         })
