@@ -61,7 +61,7 @@ class List extends Component {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>Lets get to know each other! - Crate</title>
+          <title>Your results! - Crate</title>
         </Helmet>
 
         {/* Top title bar */}
@@ -92,7 +92,7 @@ class List extends Component {
           </GridCell>
         </Grid>
 
-        <Grid justifyCenter={true}>
+        <Grid style={{textAlign: "center"}}>
           <GridCell justifyCenter={true} style={{ padding: '2em', width: "50%"}}>
             <Link to={surveyRoutes.survey.path( parseInt(this.props.match.params.page) - 1 )}>
               <Button

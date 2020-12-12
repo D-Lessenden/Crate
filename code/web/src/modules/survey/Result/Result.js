@@ -6,11 +6,14 @@ import { Link, withRouter } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 // UI Imports
+import { Grid, GridCell } from '../../../ui/grid'
 import H2 from '../../../ui/typography/H2'
 import Loading from '../../common/Loading'
 import Button from '../../../ui/button/Button'
 
 import { APP_URL } from '../../../setup/config/env'
+import { setStyle } from '../../user/api/actions'
+import userRoutes from '../../../setup/routes/user'
 
 
 //Images
@@ -73,12 +76,12 @@ class Result extends PureComponent {
       score[1] += subScore[1]
       return score
     }, [0,0])
-    console.log(score)
     const result = selectResult(score)
     this.setState({
       hasRedux: true,
       result
     })
+    this.props.setStyle(`${result[0].title}&${result[1].title}`)
   }
 
   render() {
@@ -89,12 +92,28 @@ class Result extends PureComponent {
           <title>Lets get to know each other! - Crate</title>
         </Helmet>
         { this.state.hasRedux
-          ? (
-              <>
-                <H2>Your Style is {this.state.result[0].title} and {this.state.result[1].title}</H2>
-                <img src={APP_URL + this.state.result[0].imageURL} style={{height:"100%", width:"auto"}} />
-                <img src={APP_URL + this.state.result[1].imageURL} style={{height:"100%", width:"auto"}} />
-                <Button>View Your Subscriptions</Button>
+          ? ( <>
+                <Grid gutter={true} justifyCenter={true}>
+                  <GridCell style={{ padding: '2em', textAlign: 'center' }}>
+                    <H2>Your Style is {this.state.result[0].title} and {this.state.result[1].title}</H2>
+                  </GridCell>
+                </Grid>
+
+                <Grid style={{textAlign: "center"}}>
+                  <GridCell >
+                    <img src={APP_URL + this.state.result[0].imageURL} style={{height:"32em", width:"auto"}} />
+                  </GridCell>
+
+                  <GridCell >
+                    <img src={APP_URL + this.state.result[1].imageURL} style={{height:"32em", width:"auto"}} />
+                  </GridCell>
+                </Grid>
+
+                <Grid gutter={true} justifyCenter={true}>
+                  <Link to={userRoutes.subscriptions.path}>
+                    <Button theme="secondary" >View Your Subscriptions</Button>
+                  </Link>
+                </Grid>
               </>
             )
           : <Loading />
@@ -109,4 +128,4 @@ const mapStateToProps = (state) => {
     selectedItems: state.selectedItems,
   }
 }
-export default connect(mapStateToProps)(withRouter(Result))
+export default connect(mapStateToProps, {setStyle})(withRouter(Result))
