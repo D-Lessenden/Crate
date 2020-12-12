@@ -12,6 +12,16 @@ export const SURVEY_GET_ITEMS_FAILURE = 'Survey/GET_ITEMS_FAILURE'
 export const ITEM_SELECT = 'Survey/ITEM_SELECT'
 export const ITEM_DESELECT = 'Survey/ITEM_DESELECT'
 
+export const getSurveyItemsFromAPI = (clothingType) => {
+  return axios.post(routeApi, query({
+    operation:"getSurveyItems",
+    variables: {
+      type: clothingType
+    },
+    fields:["image", "score"]
+  }))
+}
+
 export const getSurveyItems = (clothingType) => {
 
   return (dispatch) => {
@@ -23,13 +33,7 @@ export const getSurveyItems = (clothingType) => {
       }
     )
 
-    return axios.post(routeApi, query({
-      operation:"getSurveyItems",
-      variables: {
-        type: clothingType
-      },
-      fields:["image", "score"]
-    }))
+    getSurveyItemsFromAPI(clothingType)
     .then(response => {
       if (response.status === 200) {
         dispatch(
