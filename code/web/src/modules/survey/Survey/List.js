@@ -33,6 +33,11 @@ class List extends PureComponent {
 
   // Runs on client only
   componentDidMount() {
+
+    // HERE IS THE PROBLEM with test. 
+    // I'm assuming map dispatch to props happens before the mock.
+    // If I remove `this.props.` here the test runs but our functionality breaks
+    // because it isn't connected to redux.
     this.props.getSurveyItems('accessory')
     this.props.setStyle('incomplete')
   }
@@ -104,4 +109,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getSurveyItems, setStyle })(List)
+export default connect(listState, { getSurveyItems, setStyle })(withRouter(List))
