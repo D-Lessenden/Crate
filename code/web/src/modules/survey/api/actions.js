@@ -14,6 +14,16 @@ export const ITEMS_DELETE = 'Survey/ITEM_DELETE'
 export const ITEM_DESELECT = 'Survey/ITEM_DESELECT'
 export const NULL = 'NULL'
 
+export const getSurveyItemsFromAPI = (clothingType) => {
+  return axios.post(routeApi, query({
+    operation:"getSurveyItems",
+    variables: {
+      type: clothingType
+    },
+    fields:["image", "score"]
+  }))
+}
+
 export const getSurveyItems = (clothingType) => {
   if (clothingType === null) return (dispatch) => dispatch({type: 'NULL',isLoading:true})
   return (dispatch) => {
@@ -25,13 +35,7 @@ export const getSurveyItems = (clothingType) => {
       }
     )
 
-    return axios.post(routeApi, query({
-      operation:"getSurveyItems",
-      variables: {
-        type: clothingType
-      },
-      fields:["image", "score"]
-    }))
+    getSurveyItemsFromAPI(clothingType)
     .then(response => {
       if (response.status === 200) {
         dispatch(
