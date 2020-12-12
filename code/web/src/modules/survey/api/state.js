@@ -6,7 +6,9 @@ import {
   SURVEY_GET_ITEMS_RESPONSE,
   SURVEY_GET_ITEMS_FAILURE,
   ITEM_SELECT,
-  ITEM_DESELECT
+  ITEMS_DELETE,
+  ITEM_DESELECT,
+  NULL
 } from './actions'
 
 const surveyItemsInitialState = {
@@ -34,6 +36,12 @@ export const surveyItems = (state = surveyItemsInitialState, action) => {
         ...state, isLoading: false,
         error: action.error,
       }
+    case NULL:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        error: null,
+      }
 
       default:
         return state
@@ -41,25 +49,35 @@ export const surveyItems = (state = surveyItemsInitialState, action) => {
 }
 
 const selectedItemsInitialState = {
-  selectedItems: []
+  selectedItems: {
+    1:[],
+    2:[],
+    3:[],
+    4:[]
+  }
 }
 
 export const selectedItems = (state = selectedItemsInitialState, action) => {
   switch (action.type) {
     case ITEM_SELECT:
       return  {
-        ...state, selectedItems: [...state.selectedItems, action.item]
+        ...state,
+        selectedItems: { ...state.selectedItems, [action.page]:[...state.selectedItems[action.page], action.item] }
       }
     case ITEM_DESELECT:
-      const copyOfItems = state.selectedItems.concat()
+      const copyOfItems = state.selectedItems[action.page].concat()
       const indexToRemove = copyOfItems.findIndex(item => {
         return action.item === item
       })
       copyOfItems.splice(indexToRemove, 1)
       return {
-        ...state, selectedItems: copyOfItems
+        ...state, selectedItems: { ...state.selectedItems, [action.page]:copyOfItems }
       }
-
+      case ITEMS_DELETE:
+        return  {
+          ...state,
+          selectedItems: { ...state.selectedItems, [action.page]:[] }
+        }
       default:
         return state
   }

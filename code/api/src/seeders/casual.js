@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         type: 'full',
-        image: '/images/survey/casual/mens_suit_casual.jpg',
+        image: '/images/survey/casual/mens_suit_casual.jpeg',
         score: [0, -5],
         createdAt: new Date(),
         updatedAt: new Date()

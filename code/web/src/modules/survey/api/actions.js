@@ -10,10 +10,12 @@ export const SURVEY_GET_ITEMS_REQUEST = 'Survey/GET_ITEMS_REQUEST'
 export const SURVEY_GET_ITEMS_RESPONSE = 'Survey/GET_ITEMS_RESPONSE'
 export const SURVEY_GET_ITEMS_FAILURE = 'Survey/GET_ITEMS_FAILURE'
 export const ITEM_SELECT = 'Survey/ITEM_SELECT'
+export const ITEMS_DELETE = 'Survey/ITEM_DELETE'
 export const ITEM_DESELECT = 'Survey/ITEM_DESELECT'
+export const NULL = 'NULL'
 
 export const getSurveyItems = (clothingType) => {
-
+  if (clothingType === null) return (dispatch) => dispatch({type: 'NULL',isLoading:true})
   return (dispatch) => {
     dispatch(
       {
@@ -54,12 +56,24 @@ export const getSurveyItems = (clothingType) => {
   }
 }
 
-export const updateSelectedItems = (item, willAdd) => {
+export const updateSelectedItems = (item, willAdd, page) => {
   return (dispatch) => {
     dispatch(
       {
         type: willAdd ? ITEM_SELECT : ITEM_DESELECT,
-        item
+        item,
+        page
+      }
+    )
+  }
+}
+
+export const deletePageSelections = (page) => {
+  return (dispatch) => {
+    dispatch(
+      {
+        type: ITEMS_DELETE,
+        page
       }
     )
   }
