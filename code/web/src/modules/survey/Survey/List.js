@@ -146,4 +146,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { deletePageSelections, getSurveyItems, setStyle })(withRouter(List)) 
+export default connect(listState, { deletePageSelections, getSurveyItems, setStyle })(withRouter(List))

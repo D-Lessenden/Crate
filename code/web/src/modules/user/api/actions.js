@@ -10,6 +10,7 @@ import { routeApi } from '../../../setup/routes'
 export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
+export const SET_STYLE = 'USER/SET_STYLE'
 export const LOGOUT = 'AUTH/LOGOUT'
 
 // Actions
@@ -17,7 +18,6 @@ export const LOGOUT = 'AUTH/LOGOUT'
 // Set a user after login or using localStorage token
 export function setUser(token, user) {
   if (token) {
-    console.log(user)
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
     delete axios.defaults.headers.common['Authorization'];
@@ -86,6 +86,12 @@ export function setStyle(style) {
       },
       fields: ['style']
     }))
+    .then( () => {
+      dispatch({
+        type: SET_STYLE,
+        style
+      })
+    })
   }
 }
 

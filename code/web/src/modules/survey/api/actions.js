@@ -47,7 +47,7 @@ export const getSurveyItems = (clothingType) => {
           }
         )
       } else {
-        console.error('SURVEY ITEM RESPONSE ERROR')
+        console.error('GET SURVEY ITEM RESPONSE FAILED')
       }
     })
     .catch(error => {
