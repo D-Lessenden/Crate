@@ -5,7 +5,7 @@ import { MemoryRouter, Router } from "react-router-dom";
 import { createMemoryHistory } from 'history';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
-import { SURVEY_GET_ITEMS_RESPONSE, ITEM_SELECT, ITEM_DESELECT } from '../../api/actions'
+import { SURVEY_GET_ITEMS_RESPONSE, ITEM_SELECT, ITEM_DESELECT, ITEMS_DELETE } from '../../api/actions'
 import { store } from '../../../../setup/store';
 
 import Item from '../Item';
@@ -24,7 +24,7 @@ describe('', () => {
         image:"image2.jpg",
         score:2,
       }
-    ]
+    ] 
   })
 
   it('should store survey items', () => {
@@ -52,12 +52,18 @@ describe('', () => {
       item: {
         image:"image1.jpg",
         score:1,
-      }
+      },
+      page: 1
     }
     let mockState = { 
-      selectedItems: [] 
+      selectedItems: {
+        1:[],
+        2:[],
+        3:[],
+        4:[]
+      }
     }
-    expect(surveyReducers.selectedItems(mockState, mockUpdateSelectedItems)).toEqual({ selectedItems: [mockSurveyItems[0]] })
+    expect(surveyReducers.selectedItems(mockState, mockUpdateSelectedItems)).toEqual({ selectedItems: { 1: [mockSurveyItems[0]], 2: [], 3: [], 4: [] } })
   })
   it('should remove selected items', () => {
     const mockUpdateSelectedItems = {
@@ -65,20 +71,47 @@ describe('', () => {
       item: {
         image:"image2.jpg",
         score:2,
-      }
+      },
+      page: 1
     }
     let mockState = { 
-      selectedItems: [
-        {
-          image:"image1.jpg",
-          score:1,
-        },
-        {
-          image:"image2.jpg",
-          score:2,
-        }
-      ] 
+      selectedItems: {
+        1:[
+          {
+            image:"image2.jpg",
+            score:2,
+          }
+        ],
+        2:[],
+        3:[],
+        4:[]
+      }
     }
-    expect(surveyReducers.selectedItems(mockState, mockUpdateSelectedItems)).toEqual({ selectedItems: [mockSurveyItems[0]] })
+    expect(surveyReducers.selectedItems(mockState, mockUpdateSelectedItems)).toEqual({ selectedItems: { 1: [], 2: [], 3: [], 4: [] } })
+  })
+  it('should be able to delete selected items', () => {
+    const mockUpdateSelectedItems = {
+      type: ITEMS_DELETE,
+      page: 2
+    }
+    mockState = {
+      selectedItems: {
+        1: [
+          {
+            image:"image1.jpg",
+            score:1,
+          }
+        ],
+        2: [
+          {
+            image:"image2.jpg",
+            score:2,
+          }
+        ],
+        3: [],
+        4: []
+      }
+    }
+    expect(surveyReducers.selectedItems(mockState, mockUpdateSelectedItems)).toEqual({ selectedItems: { 1: [ mockSurveyItems[0]], 2: [], 3: [], 4: [] } })
   })
 })
