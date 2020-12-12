@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 // Component
 const Tile = (props) => {
   const { children, image, width, height, style, shadow, ...others } = props
-
   return (
     <div style={Object.assign({ height, width }, style)} {...others}>
       {children}
@@ -30,6 +29,7 @@ Tile.propTypes = {
   height: PropTypes.number,
   shadow: PropTypes.string
 }
+
 Tile.defaultProps = {
   style: {},
   width: '100%',

@@ -20,7 +20,6 @@ const Item = (props) => {
     <Link to={routes.product.path(slug)}>
       <Card style={{ width: '25em', margin: '2.5em auto', backgroundColor: white }}>
         <img src={routeImage + image} alt={name} style={{ width: '100%' }}/>
-        {console.log('IN THE COMPUTER', routeImage + image)}
         <div style={{ padding: '1em 1.2em' }}>
           <H4 font="secondary" style={{ color: black }}>{ name }</H4>
           <p style={{ color: grey2, marginTop: '1em' }}>{ description }</p>

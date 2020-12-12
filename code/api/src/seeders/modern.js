@@ -22,14 +22,14 @@ module.exports = {
       },
       {
         type: 'full',
-        image: '/images/survey/modern/mens_suit_modren.jpg',
+        image: '/images/survey/modern/mens_suit_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         type: 'top',
-        image: '/images/survey/modern/mens_top_modren.jpg',
+        image: '/images/survey/modern/mens_top_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()
@@ -51,7 +51,7 @@ module.exports = {
       },
       {
         type: 'accessory',
-        image: '/images/survey/modern/woman_shoes_morden.jpg',
+        image: '/images/survey/modern/woman_shoes_modern.jpg',
         score: [5,0],
         createdAt: new Date(),
         updatedAt: new Date()

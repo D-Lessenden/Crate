@@ -28,14 +28,14 @@ class Item extends PureComponent {
   }
 
   handleItemClick = () => {
-    console.log(this.state.selected)
     this.setState({ selected: !this.state.selected });
-    updateSelectedItems(this.props.item, this.state.selected)
+    this.props.updateSelectedItems(this.props.item, this.state.selected)
   }
 
   render() {
     return (
       <img
+        alt={this.props.item.image}
         src={routeImage + this.props.item.image}
         style={{
           height: '5em',
@@ -56,4 +56,4 @@ function itemState(state) {
   }
 }
 
-export default connect(itemState)(withRouter(Item))
+export default connect(itemState, { updateSelectedItems })(withRouter(Item))
