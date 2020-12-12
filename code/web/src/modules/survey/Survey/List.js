@@ -61,7 +61,7 @@ class List extends Component {
       <div>
         {/* SEO */}
         <Helmet>
-          <title>Lets get to know each other! - Crate</title>
+          <title>Your results! - Crate</title>
         </Helmet>
 
         {/* Top title bar */}
@@ -146,4 +146,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { deletePageSelections, getSurveyItems, setStyle })(withRouter(List)) 
+export default connect(listState, { deletePageSelections, getSurveyItems, setStyle })(withRouter(List))
