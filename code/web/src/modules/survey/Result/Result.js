@@ -101,11 +101,11 @@ class Result extends PureComponent {
 
                 <Grid style={{textAlign: "center"}}>
                   <GridCell >
-                    <img src={APP_URL + this.state.result[0].imageURL} style={{height:"32em", width:"auto"}} />
+                    <img src={APP_URL + this.state.result[0].imageURL} data-testid={'women-style-image'} style={{height:"32em", width:"auto"}} />
                   </GridCell>
 
                   <GridCell >
-                    <img src={APP_URL + this.state.result[1].imageURL} style={{height:"32em", width:"auto"}} />
+                    <img src={APP_URL + this.state.result[1].imageURL} data-testid={'men-style-image'} style={{height:"32em", width:"auto"}} />
                   </GridCell>
                 </Grid>
 
