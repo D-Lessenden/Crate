@@ -18,6 +18,7 @@ import { APP_URL } from '../../../setup/config/env'
 import Loading from '../../common/Loading'
 import EmptyMessage from '../../common/EmptyMessage'
 import Item from './Item.js'
+import resultRoute from '../../../setup/routes/result'
 import surveyRoutes from '../../../setup/routes/survey'
 import { messageShow, messageHide } from '../../common/api/actions'
 import { getSurveyItems, deletePageSelections } from '../api/actions'
@@ -53,7 +54,6 @@ class List extends Component {
     }
     this.props.getSurveyItems( pageItem[ page ] )
     this.props.deletePageSelections( page )
-    console.log(this.props.selectedItems)
   }
 
   render() {
@@ -106,7 +106,10 @@ class List extends Component {
           </GridCell>
 
           <GridCell justifyRight={true} style={{ padding: '2em'}}>
-            <Link to={surveyRoutes.survey.path( parseInt(this.props.match.params.page) + 1 )}>
+            <Link to={
+              Object.values( this.props.selectedItems.selectedItems ).every( arr => arr.length > 0)
+              ? resultRoute.result.path
+              : surveyRoutes.survey.path( parseInt(this.props.match.params.page) + 1 )}>
               <Button
                 type="button"
                 theme="secondary"
@@ -116,7 +119,10 @@ class List extends Component {
                   : true
                 }
                 onClick={this.handleNextClick}
-                >Next
+                >{
+                  Object.values( this.props.selectedItems.selectedItems ).every( (arr, i) => arr.length > 0 || i === this.props.match.params.page - 1)
+                  ? "See your results"
+                  : "Next"}
               </Button>
             </Link>
           </GridCell>
