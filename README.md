@@ -1,104 +1,67 @@
-![Crate](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/hero-with-link.png)
-
 # Crate 👕👖📦
 
-#### Get monthly subscription of trendy clothes and accessories.
-- **API** built with Node, GraphQL, Express, Sequelize (MySQL) and JWT Auth
-- **WebApp** built with React and Redux along with Server Side Rendering (SSR) / SEO friendly
-- **Mobile** (Android and iOS) Native App build with React Native
-- Written in ES6+ using Babel + Webpack
-- Designed using Adobe Experience Design. Preview it [here](https://xd.adobe.com/view/a662a49f-57e7-4ffd-91bd-080b150b0317/).
+> A Full-Stack Project by: 
+
+[Bret Merritt,](https://github.com/bretm9) 
+
+[Daniel Lessenden,](https://github.com/D-Lessenden) 
+
+[Hashim Gari,](https://github.com/#5hashmaster3k) 
+
+[Logan Riffel,](https://github.com/#4lkriffell) 
+
+[Matthew Lane,](https://github.com/GreyMatteOr) 
+
+and [Michael Walker](https://github.com/MichaelEWalker87)
+<!-- [Link to deployed website](https://example.herokuapp.com/) -->
 
 
-## Features
-- Modular and easily scalable code structure
-- Emphasis on developer experience
-- UI components in separate folder which can be swapped for your favorite UI framework easily
-- Responsive UI for React Native to support Mobile and Tablet
-- GraphQL schema with associations
-- Database migration and data seeding
-- User authentication using JSON Web Tokens with GraphQL API
-- File upload feature with GraphQL
-- React storybook demonstrating UI components for web
-- Server side rendering
-- Multi-package setup and dev scripts for an automated dev experiance
+## Contents
+
+1. [Technologies](#technologies)
+1. [Overview](#overview)
+1. [Setup](#setup)
+1. [multi Package Automation](#multi-package-automation)
+1. [Design](#design)
+1. [Evolution](#evolution)
+1. [Challenges](#challenges)
+1. [Successes](#successes)
 
 
-## Useful for
-- Developers with basic knowledge on React exploring advance React projects
-- Developers learning React Native
-- Exploring GraphQL
-- Scalable project structure and code
-- Starter application for Mobile and Web along with SSR
-- Multi-package scripts
-- Sample project with combination of all above
+ ## Technologies
+
+  - Javascript
+  - React
+  - Redux
+  - Node
+  - Express
+  - Postgress
+  - GraphQL
+  - Sequelize (MySQL)
+  - Jest
+  - Axios
+  - Server Side Rendering
+  - Git
+  - Written in ES6+ using Babel + Webpack
+
+> [Back to the top](#crate)
 
 
-## Screenshots and GIFs
-Click on image to view fullscreen and zoom
+## Overview
 
-### Desktop
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/desktop-all-with-link.png)
+  This application is a full-stack project for Module 4 at Turing School of Software and Design. This repo was forked from [atulmy's open source repo.](https://github.com/atulmy/crate) Our goal was to plan, design, and implement a new feature into an unfamiliar code-base. We had 2 weeks to complete the task. The first week we spent getting to know the code-base, drawing out our data-flow, and designing wireframes. The second week we spent coding in our new feature.
+  
+  Our feature was a style survey that appears for the user when they first subscribe to a monthly crate subscription. This survey is built with the intent to refine the user's subscription to best fit their personal style. 
 
-![Crate Desktop](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/desktop-all-with-link.png)
-
-### Mobile
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/mobile-all-with-link.png) · [GIF](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/mobile.gif)
-
-![Crate Mobile](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/mobile-all-with-link.png)
-
-### Tablet
-[IMAGE](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/tablet-all-with-link.png) · [GIF](https://github.com/atulmy/atulmy.github.io/blob/master/images/crate/tablet.gif)
-
-![Crate Tablet](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/crate/tablet-all-with-link.png)
+> [Back to the top](#crate)
 
 
-## Core Structure
-    code
-      ├── package.json
-      │
-      ├── api (api.example.com)
-      │   ├── public
-      │   ├── src
-      │   │   ├── config
-      │   │   ├── migrations
-      │   │   ├── modules
-      │   │   ├── seeders
-      │   │   ├── setup
-      │   │   └── index.js
-      │   │
-      │   └── package.json
-      │
-      ├── mobile (Android, iOS)
-      │   ├── assets
-      │   ├── src
-      │   │   ├── modules
-      │   │   ├── setup
-      │   │   ├── ui
-      │   │   └── index.js
-      │   │
-      │   └── package.json
-      │
-      ├── web (example.com)
-      │   ├── public
-      │   ├── src
-      │   │   ├── modules
-      │   │   ├── setup
-      │   │   ├── ui
-      │   │   └── index.js
-      │   ├── storybook
-      │   │
-      │   └── package.json
-      │
-      ├── .gitignore
-      └── README.md
+## Setup
 
-
-## Setup and Running
 - Prerequisites
   - Node
   - MySQL (or Postgres / Sqlite / MSSQL)
-- Clone repo `git clone git@github.com:atulmy/crate.git crate`
+- Clone repo `git clone git@github.com:GreyMatteOr/crate.git crate`
 - Switch to `code` directory `cd code`
 - Configurations
   - Modify `/api/src/config/database.json` for database credentials
@@ -119,7 +82,9 @@ Click on image to view fullscreen and zoom
   - Run API `cd api` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
   - Run Webapp `cd web` and `npm run start:prod`, creates an optimized build in `build` directory and runs the server
 
+
 ## Multi-package automation
+
 - New developers are advised to run through the above 'setup and running' process before reading further.
 - Optional multi-package automation for faster setup and easier dev environment initiation.
 - No need to cd to sub-folders unless working with mobile or running a production build.
@@ -132,50 +97,72 @@ Click on image to view fullscreen and zoom
         - Run API alone `npm start:api`, browse GraphiQL at http://localhost:8000/
         - Run Webapp alone `npm start:web`, browse webapp at http://localhost:3000/
 
-## Resources and Inspirations
-- ✍️ Opinionated project architecture for Full-Stack JavaScript Applications - [GitHub](https://github.com/atulmy/fullstack-javascript-architecture)
-- 🌈 Simple Fullstack GraphQL Application - [GitHub](https://github.com/atulmy/fullstack-graphql)
-- 🌐 Universal react application with server side rendering - [GitHub](https://github.com/atulmy/universal-react)
-- Container Components - [Medium Post](https://medium.com/@learnreact/container-components-c0e67432e005)
-- Zero to GraphQL in 30 Minutes - [YouTube](https://www.youtube.com/watch?v=UBGzsb2UkeY&list=PLkuiMQfg5DujhOSZ1A8kDl0hKV_ICTjp-)
-- Building a GraphQL Server [YouTube Playlist](https://www.youtube.com/playlist?list=PLillGF-RfqbYZty73_PHBqKRDnv7ikh68)
-- Universal JavaScript Web Applications with React by [Luciano Mammino](https://github.com/lmammino) - [YouTube](https://www.youtube.com/watch?v=0VEwRFP8WtI)
-- Building Youtube UI in React Native in 30 Mins - [YouTube](https://www.youtube.com/watch?v=LdKtugH-sb8)
-- Building Stellar Mobile UX With React Native - [YouTube](https://www.youtube.com/watch?v=ssXB9RMTpTs)
-- Free MySQL hosting https://remotemysql.com
+> [Back to the top](#crate)
 
 
-## Why open source a project and not a boilerplate or framework?
-- While building a new project with Node, you can basically start scratch, adding libraries and tools as you go on building it further.
-- Comparing with any other languague, you usually start with a framework, for example, Laravel (PHP), Django (Python) or Ruby on Rails (Ruby) which includes a ton of features and codebase which you never end up using.
-- I've personally found, learning by going through a good project codebase step by step while building your own project helps in ease of understanding and remembering
+## Design
+
+  For our survey feature, We have two types of pages. A survey page, which is repeated several times until the survey is complete (populated with new items), and a result page.
+
+  Each survey page lists several clothing items to choose from. Each item has a style attribute associated with it that our application keeps track of. The user can select as many or as few items as they like, and after navigating through several different survey pages the "Next" button will read "View Results"
+
+  <!-- Survey Page screenshot goes here -->
+
+  Upon clicking "View Results" The user is brought to the result page where they see their style title, and images that match that style. 
+
+  <!-- Result screenshot goes here -->
+
+> [Back to the top](#crate)
 
 
-## Author
+## Evolution
+
+  For this project we used a [GitHub Project Board](https://github.com/GreyMatteOr/Crate/projects/1) to plan out our course-of-action, as well as [excalidraw.com](https://excalidraw.com/) to map out our data-flow, and wireframes to visualize our design.
+  
+  Data-flow:
+
+  <img width="840" alt="Screen Shot 2020-12-06 at 3 49 37 PM" src="https://user-images.githubusercontent.com/14350203/102021632-5481ee00-3d3e-11eb-89c3-4f38c5938168.png">
+
+  Wireframes:
+
+<!-- Insert wireframes here -->
+
+> [Back to the top](#crate)
+
+
+## Challenges  
+ 
+  One challenge the front-end faced was testing redux-connected components with Jest. Mocking the right redux functionality to make tests run, while also maintaining functionality that we could test proved to be quite time-consuming, but ended up being an excellent learning experience. 
+ 
+> [Back to the top](#crate)
+
+
+## Successes
+ 
+  We learned we all could become familiar with a new code-base with unknown techs in a matter of days! The necessity of understanding the ways various technologies that were implemented in order to be able to add our new feature  was a great way to force us to become fluent in the code-base quickly. 
+  
+  The fact that Redux was previously integrated into this repo in a somewhat unconvential way made it so that we had to understand the ins and outs of Redux in order to understand the code. 
+  
+> [Back to the top](#crate)
+
+
+## Original Author
+
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 
 
-## Contributors
+## Original Contributors
+
 - Ebou Jobe - [GitHub](https://github.com/ebouJ)
 - Nenad Radovanovic - [GitHub](https://github.com/nrcloud) · [Twitter](https://twitter.com/publicshone)
 - Nicholas Drew - [GitHub](https://github.com/nickdrew)
 - Mateus Abdala - [GitHub](https://github.com/mateusabdala)
 - Hossein Nedaee - [GitHub](https://github.com/hosseinnedaee)
 - Mohammad Afzal - [GitHub](https://github.com/afzalex)
-- [YOUR NAME HERE] - Feel free to contribute to the codebase by resolving any open issues, refactoring, adding new features, writing test cases or any other way to make the project better and helpful to the community. Feel free to fork and send pull requests.
-
-
-## Donate
-If you liked this project, you can donate to support it ❤️
-
-[![Donate via PayPal](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/paypal-me-smaller.png)](http://paypal.me/atulmy) [![Become a Patreon](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/patreon.png?v=1)](https://www.patreon.com/atulmy)
-
-
-## Hire me
-Looking for a developer to build your next idea or need a developer to work remotely? Get in touch: [atul.12788@gmail.com](mailto:atul.12788@gmail.com)
 
 
 ## License
+
 Copyright (c) 2018 Atul Yadav http://github.com/atulmy
 
 The MIT License (http://www.opensource.org/licenses/mit-license.php)
