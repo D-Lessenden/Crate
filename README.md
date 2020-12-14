@@ -2,15 +2,15 @@
 
 > A Full-Stack Project by: 
 
-[Bret Merritt](https://github.com/bretm9),
+[Bret Merritt,](https://github.com/bretm9) 
 
-[Daniel Lessenden](https://github.com/D-Lessenden),
+[Daniel Lessenden,](https://github.com/D-Lessenden) 
 
-[Hashim Gari](https://github.com/#5hashmaster3k),
+[Hashim Gari,](https://github.com/#5hashmaster3k) 
 
-[Logan Riffel](https://github.com/#4lkriffell),
+[Logan Riffel,](https://github.com/#4lkriffell) 
 
-[Matthew Lane](https://github.com/GreyMatteOr),
+[Matthew Lane,](https://github.com/GreyMatteOr) 
 
 and [Michael Walker](https://github.com/MichaelEWalker87)
 <!-- [Link to deployed website](https://example.herokuapp.com/) -->
@@ -21,7 +21,6 @@ and [Michael Walker](https://github.com/MichaelEWalker87)
 1. [Technologies](#technologies)
 1. [Overview](#overview)
 1. [Setup](#setup)
-1. [How To Use Our New Feature](#how-to-use-our-new-feature)
 1. [multi Package Automation](#multi-package-automation)
 1. [Design](#design)
 1. [Evolution](#evolution)
@@ -76,30 +75,9 @@ and [Michael Walker](https://github.com/MichaelEWalker87)
 - Development
   - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
   - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
+- Production
 
 > [Back to the top](#crate)
-
-
-## How To Use Our New Feature
-
-* Navigate to our feature:
-
-  * Once the front-end and back-end servers are up and running visit `localhost:3000` in your browser
-  * Go to the `Create An Account` page by clicking the sign-up button in the top right of the page
-  * Create a new user using the input fields
-  * Login using your new credentials.
-  * Navigate to the `Crates` page by clicking the `Crates` button on the navigation bar
-  * Once on the `Crates` page, click the `subscribe` button under a crate that sounds appealing to you
-  * You will now be brought to the `Survey` page! Welcome to our feature!
-  
-* Using our feature:
-
-  * On the `Survey` page you are presented with various clothing items. Click as many or as few as you find appealing. Your choices will determine your style result!
-  * Once you’re happy with your selection on the first page, click the `Next` button. You will be brought to another portion of the survey, with the same functionality.
-  * Navigate through the rest of the survey, selecting clothes that you enjoy until you come to the last page, where the `Next` button is replaced with `View Your Result`.
-  * Click the `View Your Result` button to be brought to the `Survey Result` page. 
-  * This page indicates your calculated style based on your clothing choices in the survey. Your style can be anything from `Classic and Casual` to `Modern and Formal`.
-  * Now click the `Subscriptions` button to navigate to the `Subscriptions` page, where you can view your new subscription!
 
 
 ## Design
@@ -151,6 +129,8 @@ and [Michael Walker](https://github.com/MichaelEWalker87)
 ## Challenges  
  
   One challenge the front-end faced was testing redux-connected components with Jest. Mocking the right redux functionality to make tests run, while also maintaining functionality that we could test proved to be quite time-consuming, but ended up being an excellent learning experience. 
+  
+  On the back-end, it was challenging to dive into a new code base. JavaScript was a foreign language for all of us so it took some time to become acquainted with the existing code. We believe we overcame that challenge, we met all objectives and tasks that were assigned to us and even got around to testing the pre-existing code. We went from 0% coverage at the start of the project to 80% coverage by the final code freeze. I have heard that Turing does not teach people a language but how to learn languages and I can say I fully appreciate that sentiment after this project.   
  
 > [Back to the top](#crate)
 
