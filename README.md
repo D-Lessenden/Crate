@@ -101,11 +101,21 @@ and [Michael Walker](https://github.com/MichaelEWalker87)
   
   Data-flow:
 
-  <img width="840" alt="Screen Shot 2020-12-06 at 3 49 37 PM" src="https://user-images.githubusercontent.com/14350203/102021632-5481ee00-3d3e-11eb-89c3-4f38c5938168.png">
+  <img width="840" alt="User Stories" src="https://user-images.githubusercontent.com/14350203/102021632-5481ee00-3d3e-11eb-89c3-4f38c5938168.png">
 
   Wireframes:
+  
+* Survey Page 
+  <img width="840" alt="Wireframe of the survey page" src="https://i.imgur.com/oiB5Esd.png">
+  
 
-<!-- Insert wireframes here -->
+* Overview Page (to be added) 
+  <img width="840" alt="Wireframe of the the overview page" src="https://i.imgur.com/vt2nXTu.png">
+
+  
+* Final Result Page  
+  <img width="840" alt="Wireframe of the the final page" src="https://i.imgur.com/oiB5Esd.png">
+
 
 > [Back to the top](#crate)
 
