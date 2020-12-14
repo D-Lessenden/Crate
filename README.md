@@ -2,15 +2,15 @@
 
 > A Full-Stack Project by: 
 
-[Bret Merritt,](https://github.com/bretm9) 
+[Bret Merritt](https://github.com/bretm9),
 
-[Daniel Lessenden,](https://github.com/D-Lessenden) 
+[Daniel Lessenden](https://github.com/D-Lessenden),
 
-[Hashim Gari,](https://github.com/#5hashmaster3k) 
+[Hashim Gari](https://github.com/#5hashmaster3k),
 
-[Logan Riffel,](https://github.com/#4lkriffell) 
+[Logan Riffel](https://github.com/#4lkriffell),
 
-[Matthew Lane,](https://github.com/GreyMatteOr) 
+[Matthew Lane](https://github.com/GreyMatteOr),
 
 and [Michael Walker](https://github.com/MichaelEWalker87)
 <!-- [Link to deployed website](https://example.herokuapp.com/) -->
@@ -75,7 +75,6 @@ and [Michael Walker](https://github.com/MichaelEWalker87)
 - Development
   - Run API `cd api` and `npm start`, browse GraphiQL at http://localhost:8000/
   - Run Webapp `cd web` and `npm start`, browse webapp at http://localhost:3000/
-- Production
 
 > [Back to the top](#crate)
 
