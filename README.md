@@ -106,14 +106,20 @@ and [Michael Walker](https://github.com/MichaelEWalker87)
   Wireframes:
   
 * Survey Page 
+
+
   <img width="420" alt="Wireframe of the survey page" src="https://i.imgur.com/oiB5Esd.png">
   
 
 * Overview Page (to be added) 
+
+
   <img width="420" alt="Wireframe of the the overview page" src="https://i.imgur.com/vt2nXTu.png">
 
   
 * Final Result Page  
+
+
   <img width="420" alt="Wireframe of the the final page" src="https://i.imgur.com/oiB5Esd.png">
 
 
