@@ -86,11 +86,11 @@ and [Michael Walker](https://github.com/MichaelEWalker87)
 
   Each survey page lists several clothing items to choose from. Each item has a style attribute associated with it that our application keeps track of. The user can select as many or as few items as they like, and after navigating through several different survey pages the "Next" button will read "View Results"
 
-  <!-- Survey Page screenshot goes here -->
+ <img width="1024" alt="Screen Shot 2020-12-14 at 8 57 39 AM" src="https://user-images.githubusercontent.com/65369751/102110773-6e790a80-3dea-11eb-8218-027f19641ed0.png">
 
   Upon clicking "View Results" The user is brought to the result page where they see their style title, and images that match that style. 
 
-  <!-- Result screenshot goes here -->
+<img width="1024" alt="Screen Shot 2020-12-14 at 9 00 14 AM" src="https://user-images.githubusercontent.com/65369751/102111082-cca5ed80-3dea-11eb-95d2-9767225b80b7.png">
 
 > [Back to the top](#crate)
 
